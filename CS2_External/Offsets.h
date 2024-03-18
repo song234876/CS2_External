@@ -5,43 +5,46 @@
 // From: https://github.com/a2x/cs2-dumper/blob/main/generated/client.dll.hpp
 namespace Offset
 {
-	inline DWORD EntityList;
-	inline DWORD Matrix;
-	inline DWORD ViewAngle;
-	inline DWORD LocalPlayerController;
-	inline DWORD LocalPlayerPawn;
-	inline DWORD ForceJump;
-	inline DWORD GlobalVars;
+	inline DWORD EntityList = 0x18C2D58; //offset.hpp + client.dll + dwEntityList
+	inline DWORD Matrix = 0x19241A0;                 //offset.hpp + client.dll + dwViewMatrix
+	inline DWORD ViewAngle = 0x19309B0;              //offset.hpp + client.dll + dwViewAngles
+	inline DWORD LocalPlayerController = 0x1912578;  //offset.hpp + client.dll + dwLocalPlayerController
+	inline DWORD LocalPlayerPawn = 0x17371A8;        //offset.hpp + client.dll + dwLocalPlayerPawn
+	inline DWORD ForceJump = 0x1730530;				//offset.hpp + client.dll + dwForceJump
+	inline DWORD GlobalVars = 0x172ABA0;			//offset.hpp + client.dll + dwGlobalVars
 
 	struct
 	{
-		DWORD Health = 0x32C;
-		DWORD TeamID = 0x3BF;
-		DWORD IsAlive = 0x7DC;
-		DWORD PlayerPawn = 0x5F4;
-		DWORD iszPlayerName = 0x628;
+		DWORD Health = 0x334;			//client.dll.hpp + C_BaseEntity + m_iHealth
+		DWORD TeamID = 0x3CB;			//client.dll.hpp + C_BaseEntity + m_iTeamNum
+		DWORD IsAlive = 0x7EC;			//client.dll.hpp + CCSPlayerController + m_bPawnIsAlive
+		DWORD PlayerPawn = 0x7E4;		//client.dll.hpp + CCSPlayerController + m_hPlayerPawn
+		DWORD iszPlayerName = 0x638;	//client.dll.hpp + CBasePlayerController + m_iszPlayerName
 	}Entity;
 
 	struct
 	{
-		DWORD Pos = 0x1224;
-		DWORD MaxHealth = 0x328;
-		DWORD CurrentHealth = 0x32C;
-		DWORD GameSceneNode = 0x310;
-		DWORD BoneArray = 0x1E0;
-		DWORD angEyeAngles = 0x1510;
-		DWORD vecLastClipCameraPos = 0x128C;
-		DWORD pClippingWeapon = 0x12A8;
-		DWORD iShotsFired = 0x1418;
-		DWORD flFlashDuration = 0x1468;
-		DWORD aimPunchAngle = 0x1714;
-		DWORD aimPunchCache = 0x1738;
-		DWORD iIDEntIndex = 0x153C;
-		DWORD iTeamNum = 0x3BF;
-		DWORD CameraServices = 0x10E0;
-		DWORD iFovStart = 0x214;
-		DWORD fFlags = 0x3C8;
-		DWORD bSpottedByMask = 0x1630 + 0xC; // entitySpottedState + bSpottedByMask
+		DWORD Pos = 0x127C;						//client.dll.hpp + C_BasePlayerPawn + m_vOldOrigin
+		DWORD MaxHealth = 0x330;				//client.dll.hpp + C_BaseEntity + m_iMaxHealth
+		DWORD CurrentHealth = 0x334;			//client.dll.hpp + C_BaseEntity + m_iHealth
+		DWORD GameSceneNode = 0x318;			//client.dll.hpp + C_BaseEntity + m_pGameSceneNode
+		DWORD BoneArray = 0x1E0;				//client.dll.hpp + CPlayer_CameraServices + m_fOverrideFogEnd
+		DWORD angEyeAngles = 0x1578;			//client.dll.hpp + C_CSPlayerPawnBase + m_angEyeAngles
+		DWORD vecLastClipCameraPos = 0x12EC;	//client.dll.hpp + C_CSPlayerPawnBase + m_vecLastClipCameraPos
+		DWORD pClippingWeapon = 0x1308;			//client.dll.hpp + C_CSPlayerPawnBase + m_pClippingWeapon
+		DWORD iShotsFired = 0x147C;				//client.dll.hpp + C_CSPlayerPawnBase + m_iShotsFired
+		DWORD flFlashDuration = 0x14CC;			//client.dll.hpp + C_CSPlayerPawnBase + m_flFlashDuration
+		DWORD aimPunchAngle = 0x177C;			//client.dll.hpp + C_CSPlayerPawn + m_aimPunchAngle
+		DWORD aimPunchCache = 0x17A0;			//client.dll.hpp + C_CSPlayerPawn + m_aimPunchCache
+		DWORD iIDEntIndex = 0x15A4;				//client.dll.hpp + C_CSPlayerPawnBase + m_iIDEntIndex
+		DWORD iTeamNum = 0x3CB;					//client.dll.hpp + C_BaseEntity + m_iTeamNum
+		DWORD CameraServices = 0x1138;			//client.dll.hpp + C_BasePlayerPawn + m_pCameraServices
+		DWORD iFovStart = 0x214;				//client.dll.hpp + CCSPlayerBase_CameraServices + m_iFOVStart
+		DWORD fFlags = 0x3D4;					//client.dll.hpp + C_BaseEntity + m_fFlags
+		DWORD m_vecAbsVelocity = 0x3D8;	//client.dll.hpp + CBasePlayerController + m_vecAbsVelocity
+		DWORD m_entitySpottedState = 0x1698;	//client.dll.hpp + C_CSPlayerPawnBase + m_entitySpottedState
+		DWORD m_bSpottedByMask = 0xC;			//client.dll.hpp + EntitySpottedState_t + m_bSpottedByMask
+		DWORD bSpottedByMask = m_entitySpottedState + m_bSpottedByMask; // entitySpottedState + bSpottedByMask	
 	}Pawn;
 
 	struct

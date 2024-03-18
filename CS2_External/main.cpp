@@ -21,17 +21,17 @@ int main()
 	MenuConfig::path = documentsPath;
 	MenuConfig::path += "/CS2_External";
 
-	if (ProcessStatus != StatusCode::SUCCEED)
-	{
+	while (ProcessStatus != StatusCode::SUCCEED) {
+		ProcessStatus = ProcessMgr.Attach("cs2.exe");
 		std::cout << "[ERROR] Failed to attach process, StatusCode:" << ProcessStatus << std::endl;
-		goto END;
+		Sleep(1000);
 	}
 
-	if (!Offset::UpdateOffsets())
+	/*if (!Offset::UpdateOffsets())
 	{
 		std::cout << "[ERROR] Failed to update offsets." << std::endl;
 		goto END;
-	}
+	}*/
 
 	if (!gGame.InitAddress())
 	{
